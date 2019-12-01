@@ -594,14 +594,23 @@ After receiving a command from Tasmota (Command Word `0x06`), the MCU performs c
 
 
 ### BecaThermostat(WIP)
-
+```
 | DP ID | Function points     | Identifier  | Data type        | Function type | Properties                                 |
 |-------|---------------------|-------------|------------------|---------------|--------------------------------------------|
 | 1     | Switch              | Power       | Issue and report | Boolean       |                                            |
-| 2     | Target temperature  | TempSet     | Issue and report | Integer       | Values range:0-37, Pitch1, Scale0, Unit:℃  |
-| 3     | Current Temperature | TempCurrent | Only report      | Integer       | Values range:-9-99, Pitch1, Scale0, Unit:℃ |
-| 4     | Mode                | Mode        | Issue and report | Enum          | Enumerated values:m, p (wip)               |
+| 2     | Target temperature  | TempSet     | Issue and report | Integer       | Values range:0-37, Pitch1, Scale0, Unit:℃ |
+| 3     | Current Temperature | TempCurrent | Only report      | Integer       | Values range:-9-99, Pitch1, Scale0, Unit:℃|
+| 4     | Mode                | Mode        | Issue and report | Enum          | Enumerated values:0, 1                     |
+| 5     | Eco Mode            |Eco Mode     | Issue and report | Boolean       |                                            |
+| 6     | Lock                |Lock         | Issue and report | Boolean       |                                            |
 | 102   | Floor Temperature   | FloorCurrent| Issue and report | Integer       | Values range:0-37, Pitch1, Scale0, Unit:℃ |
+```
+> `set DateTime` function only work via SerialSend5 command because data format is not standard. Below an example of data
+```
+//                       ?? YY MM DD HH MM SS Weekday
+//DEC:                   01 19 02 15 16 04 18 05
+//HEX: 55 AA 00 1C 00 08 01 13 02 0F 10 04 12 05
+```
 
 
 ## Further Reading
